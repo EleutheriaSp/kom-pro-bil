@@ -23,4 +23,9 @@ public class FirmaApp {
 	public String odbNazwe(){
 		return nazwa;
 	}
+	
+	public <T> T akceptuj( OdwiedzajacyFirmeApp<T> odwiedzajacy){
+		return odwiedzajacy.odwiedz( this);
+	}
+
 }
