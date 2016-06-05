@@ -10,7 +10,7 @@ import javax.persistence.criteria.Root;
 import pl.kommedia.jpa.administracja.FirmaApp;
 
 public class FirmyDao {
-	public EntityManager em;
+	private EntityManager em;
 
 	public FirmyDao( EntityManager em){
 		this.em= em;

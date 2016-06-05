@@ -7,11 +7,11 @@
 	<description>Implementacja dla Kom-Media </description>
 
 	<dependencies>
- 		<dependency>
-			<groupId>org.eclipse.persistence</groupId>
-			<artifactId>eclipselink</artifactId>
-			<scope>provided</scope>
-			<version>2.6.2</version>
+
+		<dependency>
+			<groupId>pl.kompro</groupId>
+			<artifactId>kom-pro-std</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		
 	</dependencies>
