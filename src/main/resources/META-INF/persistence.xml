@@ -3,6 +3,8 @@
 	<persistence-unit name="kom-pro-bil">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>pl.kommedia.jpa.administracja.FirmaApp</class>
+		<class>pl.kommedia.sprzedaz.jpa.FakturaBil</class>
+		<class>pl.kommedia.sprzedaz.jpa.FakturaPodstawowaBil</class>
 		<properties>
 			<property name="eclipselink.target-server" value="None"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@ABG-TEST-VM:1521:POKAZ1"/>

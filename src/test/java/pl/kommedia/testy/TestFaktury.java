@@ -1,6 +1,9 @@
 package pl.kommedia.testy;
 
-import pl.kommedia.sprzedaz.dao.FakturyDao;
+import pl.kommedia.sprzedaz.dao.FakturyBil;
+import pl.kommedia.sprzedaz.dao.FakturyBil.KryteriaFakturyBil;
+import pl.kommedia.sprzedaz.jpa.FakturaBil;
+import pl.kompro.uslugi.Utrwalacz;
 
 public class TestFaktury {
 	
@@ -9,8 +12,12 @@ public class TestFaktury {
 	}
 
 	private void start(){
-		FakturyDao fd= new FakturyDao( null);
+		FakturyBil fd= new FakturyBil( Utrwalacz.manager());
+		KryteriaFakturyBil kryteria = fd.odbKryteriaFaktury();
 		
+		for( FakturaBil faktura: kryteria.odbFaktury()){
+			System.err.println( "Faktura: "+ faktura.odbNumer());
+		}
 	}
 
 }
