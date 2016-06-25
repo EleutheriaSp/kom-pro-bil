@@ -1,4 +1,4 @@
-package pl.kommedia.sprzedaz.jpa;
+package pl.kommedia.jpa.sprzedaz;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -7,9 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import pl.kommedia.sprzedaz.dao.OdwiedzajacyFaktureBil;
+import pl.kommedia.dao.sprzedaz.OdwiedzajacyFaktureBil;
+import pl.kommedia.jpa.kartoteki.DzialSprzedazyKart;
+import pl.kommedia.jpa.kartoteki.PodmiotKart;
+import pl.kommedia.jpa.kartoteki.PodmiotPowiazanyKart;
 
 @Entity
 @Table( name= "FAKTURA", schema="BIL")
@@ -23,11 +28,38 @@ public abstract class FakturaBil {
 	
 	@Column( length= 30)
 	private String numer;
+	
+	@JoinColumn( name= "ID_DZIALUSPRZ")
+	private DzialSprzedazyKart dzial;
+	
+	@JoinColumn( name="ID_PODMIOTU")
+	@ManyToOne
+	private PodmiotKart podmiot;
+	
+	@JoinColumn( name="ID_ODBIORCY")
+	@ManyToOne
+	private PodmiotPowiazanyKart odbiorca;
 
 	public abstract <T> T akceptuj( OdwiedzajacyFaktureBil<T> odwiedzajacy);
 
+	public long odbId(){
+		return id;
+	}
+	
 	public String odbNumer(){
 		return numer;
+	}
+
+	public DzialSprzedazyKart odbDzial(){
+		return dzial;
+	}
+	
+	public PodmiotKart odbPodmiot(){
+		return podmiot;
+	}
+	
+	public PodmiotPowiazanyKart odbOdbiorce(){
+		return odbiorca;
 	}
 	
 }

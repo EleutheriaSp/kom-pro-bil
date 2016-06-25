@@ -1,9 +1,9 @@
-package pl.kommedia.sprzedaz.jpa;
+package pl.kommedia.jpa.sprzedaz;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-import pl.kommedia.sprzedaz.dao.OdwiedzajacyFaktureBil;
+import pl.kommedia.dao.sprzedaz.OdwiedzajacyFaktureBil;
 
 @Entity
 @DiscriminatorValue( value="0")

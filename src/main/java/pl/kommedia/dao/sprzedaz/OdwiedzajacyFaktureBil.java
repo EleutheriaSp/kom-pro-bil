@@ -1,6 +1,6 @@
-package pl.kommedia.sprzedaz.dao;
+package pl.kommedia.dao.sprzedaz;
 
-import pl.kommedia.sprzedaz.jpa.FakturaPodstawowaBil;
+import pl.kommedia.jpa.sprzedaz.FakturaPodstawowaBil;
 
 public interface OdwiedzajacyFaktureBil<T>{
 	

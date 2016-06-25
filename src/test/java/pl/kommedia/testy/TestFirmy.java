@@ -1,11 +1,9 @@
 package pl.kommedia.testy;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
-import pl.kommedia.dao.administracja.FirmyDao;
+import pl.kommedia.dao.administracja.KonfiguracjaApp;
+import pl.kommedia.dao.administracja.KonfiguracjaDao;
 import pl.kommedia.jpa.administracja.FirmaApp;
+import pl.kompro.uslugi.Utrwalacz;
 
 /**
  * Ma pobrać z bazy listę firm/rejonów
@@ -19,15 +17,11 @@ public class TestFirmy {
 	}
 	
 	private void start(){
-		FirmyDao firmy= new FirmyDao( odbMenagera());
-		for( FirmaApp firma: firmy.odbWykazFirm()){
+		KonfiguracjaDao firmy= new KonfiguracjaApp( Utrwalacz.manager());
+		for( FirmaApp firma: firmy.odbFirmy()){
 			System.err.println( "Firma: "+ firma.odbNazwe());
 		}
 	}
 
-	private EntityManager odbMenagera(){
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory( "kom-pro-bil");
-		return emf.createEntityManager();
-	}
 }
 
