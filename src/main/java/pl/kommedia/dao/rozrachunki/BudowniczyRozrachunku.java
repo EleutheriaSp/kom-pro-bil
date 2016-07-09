@@ -8,9 +8,7 @@ import pl.kommedia.jpa.sprzedaz.FakturaPodstawowaBil;
 public class BudowniczyRozrachunku implements OdwiedzajacyFaktureBil<RozrachunekPro>{
 
 	public RozrachunekPro odwiedz( FakturaPodstawowaBil faktura){
-		SprzedazPro rozrachunek = new SprzedazPro();
-		rozrachunek.wstFakture( faktura);
-		return rozrachunek;
+		return (new SprzedazPro()).wstFakture( faktura); // techniczne wstawienie wymagane przez JPA
 	}
 
 

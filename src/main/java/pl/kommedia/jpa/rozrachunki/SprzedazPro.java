@@ -17,7 +17,8 @@ public class SprzedazPro extends PrzychodPro{
 	@JoinColumn( name= "DOKUMENT_ID")
 	private FakturaBil faktura;
 
-	public void wstFakture( FakturaBil faktura){
+	public SprzedazPro wstFakture( FakturaBil faktura){
 		this.faktura= faktura;
+		return this;
 	}
 }

@@ -62,4 +62,12 @@ public abstract class FakturaBil {
 		return odbiorca;
 	}
 	
+	// czy odbiorca z kartoteki
+	public boolean czyOdbiorca(){
+		if( odbiorca== null)
+			return false;
+		
+		return odbiorca.czyPodmiot();
+	}
+	
 }

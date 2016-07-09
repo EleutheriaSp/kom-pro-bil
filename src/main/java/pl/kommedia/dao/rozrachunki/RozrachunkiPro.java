@@ -1,19 +1,30 @@
 package pl.kommedia.dao.rozrachunki;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import pl.kommedia.jpa.rozrachunki.RozrachunekPro;
+import pl.kompro.dao.rozrachunki.RozrachunkiStd;
+import pl.kompro.jpa.rozrachunki.StatusNaleznosciPro;
 
-public class RozrachunkiPro implements RozrachunkiDao{
+public abstract class RozrachunkiPro {
 
-	private EntityManager em;
+	public abstract void utrwal( RozrachunekPro rozrachunek);
+	public abstract List<StatusNaleznosciPro> odbStatusyRozrachunku();
 	
-	public RozrachunkiPro( EntityManager em){
-		this.em= em;
-	}
-	
-	public void utrwal( RozrachunekPro rozrachunek ){
-		em.merge( rozrachunek);
-	}
+	static public RozrachunkiPro utwRozrachunki( final EntityManager em){
+		return new RozrachunkiPro(){
+			RozrachunkiStd std= RozrachunkiStd.utwRozrachunki( em);
+			
+			@Override public void utrwal( RozrachunekPro rozrachunek){
+				em.merge( rozrachunek);
+			}
 
+			@Override public List<StatusNaleznosciPro> odbStatusyRozrachunku(){
+				return std.odbStatusyNaleznosci();
+			}
+			
+		};
+	}
 }

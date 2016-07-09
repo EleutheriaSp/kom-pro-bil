@@ -16,6 +16,8 @@ import javax.persistence.Table;
 import pl.kommedia.jpa.administracja.FirmaApp;
 import pl.kommedia.jpa.kartoteki.DzialSprzedazyKart;
 import pl.kommedia.jpa.kartoteki.PodmiotKart;
+import pl.kompro.jpa.rozrachunki.StatusNaleznosciPro;
+import pl.kompro.model.rozrachunki.StanRozrachunku;
 
 @Entity
 @Table( name= "ROZRACHUNKI", schema= "PRO")
@@ -41,6 +43,11 @@ public class RozrachunekPro {
 	
 	@JoinColumn( name= "PLATNIK_ID")
 	private PodmiotKart platnik;
+
+	@JoinColumn( name= "STATUS_ID")
+	private StatusNaleznosciPro status;
+	
+	private int stan;
 	
 	public void wstFirme( FirmaApp firma){
 		this.firma= firma;	
@@ -56,5 +63,14 @@ public class RozrachunekPro {
 	
 	public void wstPlatnika( PodmiotKart podmiot){
 		this.platnik= podmiot;
+	}
+
+	public void wstStatus( StatusNaleznosciPro status){
+		this.status= status;
+	}
+
+	public void wstStan( StanRozrachunku stan){
+		this.stan= stan.id; 
+		
 	}
 }
